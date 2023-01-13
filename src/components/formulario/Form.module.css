@@ -1,0 +1,61 @@
+.imagen {
+    width: 30%;
+    height: auto;
+    margin-left: 30%;
+}
+.contenedor {
+    background: rgb(255, 214, 222);
+    margin-left: 35%;
+    font-size:12px;
+    font-weight:bold;
+    padding:5px 25px;
+    text-decoration:none;
+    width: 18%;
+}
+.boton {
+    background-color:brown;
+    cursor:pointer;
+    color:rgb(255, 214, 222);
+    font-family:Verdana;
+    font-size:14px;
+    font-weight:bold;
+    font-style:normal;
+    padding:5px 30px;
+    text-decoration:none;
+}
+.boton:hover{
+    background-color:rgb(255, 214, 222);
+    color:brown;
+}
+
+.datos{
+    width: 100%;
+    color: brown;
+    background-color: rgb(255, 214, 222);
+	font-size: 15px;
+    font-family: "Sofia", cursive;
+}
+
+.error{
+    color: brown;
+	font-size: 10px;
+    font-family: "Sofia", cursive;
+}
+
+.volver {
+    margin-top: 100px;
+    margin-left: 37.5%;
+    background-color:brown;
+    cursor:pointer;
+    color:rgb(255, 214, 222);
+    font-family:Verdana;
+    font-size:14px;
+    font-weight:bold;
+    font-style:normal;
+    padding:5px 63px;
+    text-decoration:none;
+}
+.volver:hover{
+    background-color:rgb(255, 214, 222);
+    color:brown;
+}

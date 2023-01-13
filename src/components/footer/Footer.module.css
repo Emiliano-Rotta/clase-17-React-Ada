@@ -1,0 +1,12 @@
+.lista{
+    /* position: fixed; */
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 100%;
+    position: absolute;
+    color: brown;
+	font-size: 50%;
+    font-family: "Sofia", cursive;
+    font-style: italic;
+    font-weight:600;
+}
