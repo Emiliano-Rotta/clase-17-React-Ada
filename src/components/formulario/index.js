@@ -1,23 +1,19 @@
 import { useState } from 'react';
 import style from "./Form.module.css";
-// import {Link} from 'react-router-dom';
-// import ada from './ada.png';
+import ada from './ada.png';
 
 export default function Form(){
 
   const[input, setInput] = useState({ nombre: "", apellido: "", mail: "", edad: "", foto: "" })
   const[datos, setDatos] = useState(false)
- 
+  const [estadoError, setEstadoError] = useState({})
 
-  const [errors, setErrors] = useState({})
-
-  function errores(input){
+  function funcionError(input){
     let error = {};
 
     if(!input.nombre || !/^[A-Z]+[A-Za-z0-9\s]+$/g.test(input.nombre)){
         error.nombre = 'Al menos dos caracteres el primero, letra mayuscula.';
     }
-
     if(!input.apellido || !/^[a-z]+[A-Za-z0-9\s]+$/g.test(input.apellido)){
         error.apellido = 'Al menos dos caracteres el primero, letra minuscula.';
     }
@@ -39,7 +35,7 @@ export default function Form(){
       ...input,
       [e.target.name] : e.target.value,
       });
-      setErrors(errores({
+      setEstadoError(funcionError({
         ...input,
         [e.target.name]: e.target.value
       }));
@@ -66,7 +62,7 @@ export default function Form(){
   }
     
 
-  //Para cargar la foto desde la computadora
+//   //Para cargar la foto desde la computadora
 //   const [imageChosen, setImageChosen] = useState(false);
 //   const [imagen, setImagen] = useState("");
 
@@ -91,56 +87,57 @@ export default function Form(){
   return(
 
     <div>
-      {/* <a href="https://adaitw.org/"> */}
-      <img className ={style.imagen}src = "https://adaitw.org/wp-content/uploads/2021/05/carreras_backend_2021.png" />
-      {/* </a> */}
+      <a href="https://adaitw.org/">
+        <img className ={style.imagen}src = {ada} alt = {"ada"} />
+      </a>
 
       <form className ={style.contenedor}  onSubmit = {(e)=>handleSubmit(e)} >
      
         <label> </label><br/>
         <input
         placeholder="Nombre: (*)"
-        autocomplete="off"
+        autoComplete="off"
         type = "text"
         value = {input.nombre}
         name = "nombre"
         onChange ={(e)=>handleChange(e)} 
         /> <br/>
-        {errors.nombre && (<p className ={style.error}>{errors.nombre}</p>)} 
-                          
+        {estadoError.nombre && (<p className ={style.error}>{estadoError.nombre}</p>)} 
+               
         <input  
-        autocomplete="off"  
+        autoComplete="off"  
         type="text" 
         value={input.apellido} 
         name='apellido' 
         placeholder="Apellido. (*)"  
         onChange={(e)=>handleChange(e)} 
         /> <br/>
-        {errors.apellido && (<p className ={style.error}>{errors.apellido}</p>)}
+        {estadoError.apellido && (<p className ={style.error}>{estadoError.apellido}</p>)}
 
         <input  
-        autocomplete="off"  
+        autoComplete="off"  
         type="text" 
         value={input.mail} 
         name='mail' 
         placeholder="Mail. (*)"  
         onChange={(e)=>handleChange(e)} 
         /><br/>
-        {errors.mail && (<p className ={style.error}>{errors.mail}</p>)} 
+        {estadoError.mail && (<p className ={style.error}>{estadoError.mail}</p>)} 
 
         <input  
-        autocomplete="off" 
+        autoComplete="off" 
         type="number" 
         value={input.edad} 
         name='edad'  
         placeholder="Edad. (*)" 
         onChange={(e)=>handleChange(e)}
         /> <br/>
-        {errors.edad && (<p className ={style.error}>{errors.edad}</p>)} 
+        {estadoError.edad && (<p className ={style.error}>{estadoError.edad}</p>)} 
 
         <input  
-        autocomplete="off"  
-        type="text" 
+        autoComplete="off"  
+        type="text"
+        // type="file" //(para trabajar con subir archivo) 
         value={input.foto} 
         name='foto'  
         placeholder="Foto. (*)" 
@@ -158,7 +155,7 @@ export default function Form(){
         {imageChosen && (<img src={imagen} style={{width:'40%'}} alt="imagen"/>)} */}
 
 
-        {errors.foto && (<p className ={style.error}>{errors.foto}</p>)} 
+        {estadoError.foto && (<p className ={style.error}>{estadoError.foto}</p>)} 
 
         <button className={style.boton} type='submit'>Guardar datos</button>
 
@@ -172,12 +169,8 @@ export default function Form(){
        Edad: {input.edad},
        Foto: {input.foto}.
 
-      </div>): <p></p>}
+      </div>): ""}
 
-      {/* <Link hrefto = "/Home" ><button className={style.volver}>volver a la pagina</button></Link> */}
-      {/* <a href="https://adaitw.org/" className={style.volver}>volver</a> */}
-
-      {/* <a href="https://adaitw.org/" > <img src={ada} alt='ada' /> </a> */}
     </div>
   )
 }
